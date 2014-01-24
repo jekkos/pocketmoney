@@ -9,19 +9,21 @@ define(["jquery"], function($) {
 				$placeHolder.append('<div class="button" id="button-'+i+'"></div>');
 				var $button = $('#button-'+i);
 				$button.css("background-image","url('media/images/login/owl-"+i+".png')");
+				$button.click(callback);
 			}
 		};
 		
 		addButtons(9);
 		
-		$widget.show();
-		
-		// TODO execute callback on login succe
-		callback();
+	};
+	
+	var hide = function() {
+		$("#div_login").hide();
 	};
 	
 	return {
-		init : init
+		init : init,
+		hide : hide
 	};
 
 });

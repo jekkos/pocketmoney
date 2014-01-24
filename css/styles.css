@@ -41,3 +41,26 @@ section p{color:black;width:300px;}
 section article{position:absolute;top:240px;left:40px;width:300px;z-index:4;}
 
 .parallax-item{position:absolute;z-index:5;top:40px;left:400px;}
+
+#draggable { 
+	width: 100px;
+	height: 100px;
+	padding: 0.5em;
+	float: left;
+	margin: 10px 10px 10px 0;
+	z-index: 999;
+}
+
+.Character_Owl_2 {
+	width: 80%;
+	height: 80%;
+}
+
+#droppable {
+	position : relative;
+	top: 300px;
+	padding: 0.5em;
+	float: left;
+	margin: 10px;
+	z-index: 99;
+}

@@ -4,7 +4,7 @@
  *  Author: Victor C. / Octave & Octave web agency
  *  Licence: MIT
  */
-define("jquery", function($) {
+(function ( $, window, document, undefined ) {
     // Create the defaults once
     var pluginName = 'scrolly',
         defaults = {
@@ -76,4 +76,4 @@ define("jquery", function($) {
         });
     };
 
-});
+})(jQuery, window, document);
