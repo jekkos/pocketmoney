@@ -2,11 +2,12 @@
 // define(['bower_components/componentName/file'])
 
 define(["game", "login", "statusbar"], function(game, login) {
-	
-	login.init(function(event) {
-		  login.hide();
-		  game.init();
-		  //statusbar.init();
-    });
+	login.hide();
+	game.init();
+//	login.init(function(event) {
+//		  login.hide();
+//		  game.init();
+//		  //statusbar.init();
+//    });
 	
 });
