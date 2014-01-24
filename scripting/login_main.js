@@ -13,6 +13,7 @@ define(["jquery"], function($) {
 		$widget.show();
 		
 		// TODO execute callback on login succe
+		callback();
 	};
 	
 	return {
