@@ -1,22 +1,44 @@
 <!Doctype html>
 <html>
-	<head>
-	  <meta charset="utf-8">
-	  <title> An educational experience to learn children manage their pocket money </title>
-	  <script data-main="app/config" src="bower_components/requirejs/require.js"></script>
-	  <link rel="stylesheet" type="text/css" href="css/main.css">
-	</head>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> 
+  <title> An educational experience to learn children manage their pocket money </title>
+  <script data-main="app/config" src="bower_components/requirejs/require.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
 	<body>
-		<div id="div_login" class="widget-login" style='display:none'>
-			<h1>Sequioa voor kinderen</h1>
+		<div id="div_login" class="widget-login">
+			<h3>Sequioa voor kinderen</h3>
 			<div id="login_placeholder" class="placeHolder"></div>
+			<h3 id="login_stap">Kies je eerste figuur</h3>
+			<div class="selectedButtonsFrame">
+				<div class="selectedButton" id="selectedButton-1"></div>
+				<div class="selectedButton" id="selectedButton-2"></div>
+				<div class="selectedButton" id="selectedButton-3"></div>
+				<div class="selectedButton" id="selectedButton-4"></div>
+				<div class="selectedButton" id="selectedButton-5"></div>
+				<div class="selectedButton" id="selectedButton-6"></div>
+			</div>
 		</div>
 		
-		<div id="div_main">		
+		<div id="div_main" style="display:none;">		
+		
 			<section id="story-freext">
-		        <div class="parallax" data-velocity="-.2"></div>
-		        <div class="parallax" data-velocity="-.5"></div>
-	    	</section>
+
+			<div class="parallax" data-velocity="-.2"></div>
+			<!--  class="parallax" data-velocity="-.5" -->
+			<div >
+
+				<img id="droppable" class="ui-widget-content Nest-1"
+					src="media/images/game/Nest-1.png"></img>
+
+			</div>
+
+
+			<div id="draggable" class="ui-widget-content">
+				<img class="Character_Owl_2" src="media/images/game/Character_Owl_2.png"></img>
+			</div>
+
 		</div>
 
 	</body>

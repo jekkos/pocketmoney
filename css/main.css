@@ -2,10 +2,12 @@ body {
 	background-color: #6699CC;
 }
 
-h1 {
+h3 {
 	text-align:center;
 	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-	color:white;
+	color: white;
+	font-size: 32px;
+	margin: 20px;
 }
 
 IMG.centered {
@@ -28,10 +30,28 @@ IMG.centered {
 
 .widget-login .button {
 	float: left;
-	width: 184px;
-	height: 184px;
+	width: 183px;
+	height: 183px;
 	margin: 16px;
-	background-color: blue;
+	background-color: grey;
+	border: 1px solid black;
+}
+
+.widget-login .selectedButtonsFrame {
+	height: 84px;
+	width: 528px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.widget-login .selectedButton {
+	height: 78px;
+	width: 78px;
+	border: 3px solid black;
+	margin-right: 4px;
+	float:left;
+	background-color: white;
+	background-size: cover;
 }
 
 .link {
