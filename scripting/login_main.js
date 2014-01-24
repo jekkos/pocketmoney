@@ -10,7 +10,9 @@ define(["jquery"], function($) {
 		
 		addButtons(9);
 		
-		// TODO execute callback on login succeed
+		$widget.show();
+		
+		// TODO execute callback on login succe
 	};
 	
 	return {
