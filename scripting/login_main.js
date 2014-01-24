@@ -8,7 +8,7 @@ define(["jquery"], function($) {
 			for(var i = 1; i <= amount; i++) {
 				$placeHolder.append('<div class="button" id="button-'+i+'"></div>');
 				var $button = $('#button-'+i);
-				$button.css("background-image","url('media/images/login/owl-"+i+".png')");
+				$button.css("background-image","url('../media/images/login/owl-"+i+".png')");
 				$button.click(callback);
 			}
 		};

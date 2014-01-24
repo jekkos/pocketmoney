@@ -19,7 +19,7 @@ section {
 }
 
 #story-freext>div:nth-of-type(1) {
-    background: url(../img/BG_leafes.png) 100% 0 no-repeat fixed;
+    background: url(../media/images/game/BG_leafes.png) 100% 0 no-repeat fixed;
     margin: 0;
     height: 3200px;
     position:absolute;
@@ -28,7 +28,7 @@ section {
 }
 
 #story-freext>div:nth-of-type(2) {
-    background: url(../img/BG_tree.png) 100% 0 no-repeat fixed;
+    background: url(../media/images/game/BG_tree.png) 100% 0 no-repeat fixed;
     margin: 0;
     height: 3200px;
     position:absolute;
