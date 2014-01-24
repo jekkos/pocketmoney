@@ -1,7 +1,11 @@
+body {
+	background-color: #6699CC;
+}
+
 h1 {
 	text-align:center;
 	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
-	color:#275C1C;
+	color:white;
 }
 
 IMG.centered {
@@ -11,15 +15,21 @@ IMG.centered {
 }
 
 .widget-login {
-	width: 700px;
-	height: 700px;
-	background-color: red;
+}
+
+.widget-login .placeHolder {
+	margin-left: auto;
+    margin-right: auto;
+	border: 1px solid black;
+	width: 652px;
+	height: 652px;
+	background-color: #999966;
 }
 
 .widget-login .button {
 	float: left;
-	width:200px;
-	height: 200px;
+	width: 184px;
+	height: 184px;
 	margin: 16px;
 	background-color: blue;
 }
