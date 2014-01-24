@@ -10,7 +10,7 @@ require.config({
     "jquery-scrolly" : "../scripting/jquery.scrolly",
     "login" : "../scripting/login_main",
 	"userservice" : "../scripting/user_service",
-	"easeljs" : "../scripting/createjs-2013.12.12.min"
+	"createjs" : "../scripting/createjs-2013.12.12.min"
   }, 
   shim: {
 	    'jquery-scrolly': {
