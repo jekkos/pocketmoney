@@ -30,10 +30,11 @@ IMG.centered {
 
 .widget-login .button {
 	float: left;
-	width: 184px;
-	height: 184px;
+	width: 183px;
+	height: 183px;
 	margin: 16px;
-	background-color: blue;
+	background-color: grey;
+	border: 1px solid black;
 }
 
 .widget-login .selectedButtonsFrame {
