@@ -16,6 +16,14 @@ IMG.centered {
 	background-color: red;
 }
 
+.widget-login .button {
+	float: left;
+	width:200px;
+	height: 200px;
+	margin: 16px;
+	background-color: blue;
+}
+
 .link {
 	cursor: pointer;
 	font-weight: bold;
