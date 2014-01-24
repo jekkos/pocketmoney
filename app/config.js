@@ -5,13 +5,14 @@ require.config({
     "components": "../bower_components",
     "jquery": "../bower_components/jquery/jquery",
     "background" : "../scripting/background",
-    "login" : "../scripting/login_main",
     "scrolly" : "../scripting/jquery.scrolly"
+    "login" : "../scripting/login_main",
+    "landing" : "../scripting/landing_main"
   }
 });
 
 if (!window.requireTestMode) {
-  require(['jquery', 'login', 'background'], function(main, login, $, background){
+  require(['jquery', 'login', 'background'], function(main, login, $, background) {
 	  
   });
 }
