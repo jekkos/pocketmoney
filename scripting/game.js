@@ -1,5 +1,4 @@
 define(["jquery", "jquery-scrolly", "jquery-ui-touch-punch"], function ($) {
-	$("#div_main").hide();
     //Do setup work her
     var init = function() {
       $("#div_main").show();
