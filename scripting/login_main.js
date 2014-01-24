@@ -9,8 +9,11 @@ define(["jquery"], function($) {
 		var loginIsCorrect = true;
 		var isIOS = ((/iphone|ipad/gi).test(navigator.appVersion));
 		var myUp = isIOS ? "touchend" : "mouseup";
+		var audioElement = document.createElement('audio');
+        audioElement.setAttribute('src', 'media/sounds/login_click.mp3');
 
 		notify = function() {
+			audioElement.play();
   			var selectedNumber = $(this).attr('id').substring(7,8);
   			var $selectedButton = $('#selectedButton-'+counter);
   			$selectedButton.css("background-image","url('media/images/login/owl-"+selectedNumber+".png')");
