@@ -11,6 +11,7 @@ require.config({
     "login" : "../scripting/login_main",
 	"userservice" : "../scripting/user_service",
 	"statusbar" : "../scripting/statusbar"
+	"createjs" : "../scripting/createjs-2013.12.12.min"
   }, 
   shim: {
 	    'jquery-scrolly': {

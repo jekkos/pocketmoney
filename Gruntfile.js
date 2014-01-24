@@ -25,16 +25,6 @@ module.exports = function(grunt) {
         dest: 'dist/require.js'
       },
     },
-    copy: {
-      main: {
-        files: [
-          // includes files within path
-          {expand: true, src: ['webapp/*'], dest: 'app/', filter: 'isFile'},
-    
-        ]
-      }
-    },
-
     uglify: {
       options: {
         banner: '<%= banner %>'
@@ -128,7 +118,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'requirejs', 'concat', 'uglify']);
