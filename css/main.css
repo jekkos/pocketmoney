@@ -15,3 +15,8 @@ IMG.centered {
 	height: 700px;
 	background-color: red;
 }
+
+.link {
+	cursor: pointer;
+	font-weight: bold;
+}
