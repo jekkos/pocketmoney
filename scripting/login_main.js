@@ -21,7 +21,7 @@ define(["jquery"], function($) {
 				$placeHolder.append('<div class="button" id="button-'+i+'"></div>');
 				var $button = $('#button-'+i);
 				$button.css("background-image","url('media/images/login/owl-"+i+".png')");
-				$button.on( "click touchstart", notify );
+				$button.on( "click touchend", notify );
 			}
 		};
 
