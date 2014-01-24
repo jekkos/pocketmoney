@@ -1,24 +1,37 @@
-define(["jquery"], function($) {
+define(["jquery", "userservice"], function($, userservice) {
 
 	var init = function(callback) {
-		var loginCode = [5,9,4,1,3,6];
 		var stappen = ["eerste","tweede","derde","vierde","vijfde","zesde"];
-		var counter = 1;
 		var $widget = $('#div_login');
 		var $placeHolder = $('#login_placeholder');
-		var loginIsCorrect = true;
 		var isIOS = ((/iphone|ipad/gi).test(navigator.appVersion));
 		var myUp = isIOS ? "touchend" : "mouseup";
 		var audioElement = document.createElement('audio');
         audioElement.setAttribute('src', 'media/sounds/login_click.mp3');
+		var code = '';
 
 		notify = function() {
 			audioElement.play();
   			var selectedNumber = $(this).attr('id').substring(7,8);
-  			var $selectedButton = $('#selectedButton-'+counter);
+  			var $selectedButton = $('#selectedButton-'+(code.length + 1));
   			$selectedButton.css("background-image","url('media/images/login/owl-"+selectedNumber+".png')");
-  			counter++;
-        	setCorrectSequence(selectedNumber);
+			code += ('' + selectedNumber);
+			
+			updateStepCaption();			
+			if (code.length == 6) {
+				var user = userservice.getUserByCode(code);
+				if (undefined != user) {
+					localStorage.setItem('user_name', user.name);
+					$('#login_stap').html('Code correct, ingelogd!');
+					setTimeout(function() { 
+						$('#div_login').hide();
+						$('#div_main').show();
+					}, 2000);
+				} else {
+					reset('Foute code');
+				}			
+			}			
+			
 		}
 		
 		addButtons = function(amount) {
@@ -31,33 +44,23 @@ define(["jquery"], function($) {
 		};
 
 		reset = function(status) {
-			counter = 1;
-			loginIsCorrect = true;
-			$('#login_stap').html("Login "+status+" - Kies je eerste figuur");
+			$('#login_stap').html(status+" - Kies je eerste figuur");
 			for(var i = 1; i <= 6; i++) {
 				var $button = $('#selectedButton-'+i);
 				$button.css('background-image', 'none');
 			}
+			code = '';
 		}
-
-		setCorrectSequence = function(selectedNumber){
-			if(counter-1 === 6) { //check if login is still correct
-				if(loginIsCorrect) {
-					callback();
-				}
-				else {
-					reset('fout');
-				}
-			}
-			else {
-				if(loginIsCorrect && selectedNumber != loginCode[counter-2])
-					loginIsCorrect = false;
-				$('#login_stap').html("Kies je "+stappen[counter-1]+" figuur");
-			}
+		
+		updateStepCaption = function() {
+			$('#login_stap').html("Kies je "+stappen[code.length]+" figuur");
 		}
+		
+		updateStepCaption();
 		addButtons(9);
 		$widget.show();
 	};
+	
 	
 	var hide = function() {
 		$("#div_login").hide();
