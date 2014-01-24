@@ -17,7 +17,7 @@ define(["jquery", "jquery-scrolly", "jquery-ui-touch-punch"], function ($) {
 				if (level === 1 && top < 100 ) {
 					console.log('fall');
 					$('body').focus();
-					$('#draggable').animate({top: '400px'}, 1000);
+					$('#draggable').animate({top: '400px'}, 10);
 				} 
 
 				
@@ -37,6 +37,8 @@ define(["jquery", "jquery-scrolly", "jquery-ui-touch-punch"], function ($) {
 						setTimeout(function(){
 							fly();
 						}, 5);
+					} else {
+						console.log("stop flying");
 					}
 				}
 				fly();

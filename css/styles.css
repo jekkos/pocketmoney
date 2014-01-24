@@ -28,7 +28,7 @@ section {
 }
 
 #story-freext>div:nth-of-type(2) {
-    background: url(../media/images/game/BG_tree.png) 100% 0 no-repeat fixed;
+    background: url(../media/images/game/BG_tree.png) 100% 0 no-repeat;
     margin: 0;
     height: 3200px;
     position:absolute;
@@ -43,8 +43,8 @@ section article{position:absolute;top:240px;left:40px;width:300px;z-index:4;}
 .parallax-item{position:absolute;z-index:5;top:40px;left:400px;}
 
 #draggable { 
-	width: 100px;
-	height: 100px;
+	width: 300px;
+	height: 300px;
 	top : 400px;
 	padding: 0.5em;
 	float: left;
