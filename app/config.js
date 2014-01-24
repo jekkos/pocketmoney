@@ -1,7 +1,7 @@
 require.config({
   // make components more sensible
   // expose jquery 
-  paths: {
+  paths: {	
     "components": "../bower_components",
     "jquery": "../bower_components/jquery/jquery",
     "jquery-ui" : "../bower_components/jquery-ui/ui/jquery-ui",
@@ -9,7 +9,7 @@ require.config({
     "game" : "../scripting/game",
     "jquery-scrolly" : "../scripting/jquery.scrolly",
     "login" : "../scripting/login_main",
-	"loginservice" : "../scripting/login_sevice"
+	"userservice" : "../scripting/user_service"
   },
   shim: {
 	    'jquery-scrolly': {
@@ -26,6 +26,7 @@ require.config({
 
 if (!window.requireTestMode) {
   require(['main'], function() {
+	
 	  
   });
 }
