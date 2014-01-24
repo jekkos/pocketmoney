@@ -1,4 +1,4 @@
-define(["jquery", "jquery-scrolly", "jquery-ui-touch-punch"], function ($) {
+define(["jquery", "easeljs", "jquery-scrolly", "jquery-ui-touch-punch"], function ($, easeljs) {
     //Do setup work her
     var init = function() {
       $("#div_main").show();
