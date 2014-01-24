@@ -3,9 +3,8 @@
 
 define(["jquery", "background", "login"], function($, background, login) {
 	$("section").hide();
-	login.start(function() {
+	login.init(function() {
 		  background.init();
-	      $('.parallax').scrolly({bgParallax: true});
     });
 	
 });
