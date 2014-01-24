@@ -6,7 +6,7 @@ define(["game", "login", "statusbar"], function(game, login) {
 	login.init(function(event) {
 		  login.hide();
 		  game.init();
-		  statusbar.init();
+		  //statusbar.init();
     });
 	
 });

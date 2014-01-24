@@ -1,4 +1,4 @@
-define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], function ($, CreateJS) {
+define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], function ($, createjs) {
     //Do setup work her
     var init = function() {
       $("#div_main").show();
