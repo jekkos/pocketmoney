@@ -15,3 +15,11 @@ IMG.centered {
 	height: 700px;
 	background-color: red;
 }
+
+.widget-login .button {
+	float: left;
+	width:200px;
+	height: 200px;
+	margin: 16px;
+	background-color: blue;
+}
