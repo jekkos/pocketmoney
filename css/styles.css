@@ -1,5 +1,5 @@
 /* Reset */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+html,body,div,span,applet,object,iframe,h1,h2,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
 body{font:13px/1.1 Helvetica,sans-serif;}
 p{line-height:1.6;}
 /* Example page */
@@ -19,7 +19,7 @@ section {
 }
 
 #story-freext>div:nth-of-type(1) {
-    background: url(../img/BG_leafes.png) 100% 0 no-repeat fixed;
+    background: url(../media/images/game/BG_leafes.png) 100% 0 no-repeat fixed;
     margin: 0;
     height: 3200px;
     position:absolute;
@@ -28,7 +28,7 @@ section {
 }
 
 #story-freext>div:nth-of-type(2) {
-    background: url(../img/BG_tree.png) 100% 0 no-repeat fixed;
+    background: url(../media/images/game/BG_tree.png) 100% 0 no-repeat fixed;
     margin: 0;
     height: 3200px;
     position:absolute;
@@ -41,3 +41,26 @@ section p{color:black;width:300px;}
 section article{position:absolute;top:240px;left:40px;width:300px;z-index:4;}
 
 .parallax-item{position:absolute;z-index:5;top:40px;left:400px;}
+
+#draggable { 
+	width: 100px;
+	height: 100px;
+	padding: 0.5em;
+	float: left;
+	margin: 10px 10px 10px 0;
+	z-index: 999;
+}
+
+.Character_Owl_2 {
+	width: 80%;
+	height: 80%;
+}
+
+#droppable {
+	position : relative;
+	top: 300px;
+	padding: 0.5em;
+	float: left;
+	margin: 10px;
+	z-index: 99;
+}
