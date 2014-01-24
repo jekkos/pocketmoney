@@ -38,7 +38,7 @@ define(["jquery"], function($) {
 		setCorrectSequence = function(selectedNumber){
 			if(counter-1 === 6) { //check if login is still correct
 				if(loginIsCorrect) {
-					reset('goed'); //ToDo good login
+					callback();
 				}
 				else {
 					reset('fout');
@@ -54,8 +54,13 @@ define(["jquery"], function($) {
 		$widget.show();
 	};
 	
+	var hide = function() {
+		$("#div_login").hide();
+	};
+	
 	return {
-		init : init
+		init : init,
+		hide : hide
 	};
 
 });
