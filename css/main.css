@@ -58,3 +58,12 @@ IMG.centered {
 	cursor: pointer;
 	font-weight: bold;
 }
+
+div#status-bar {	
+	position:fixed; 
+	bottom:0; 
+	background: black;
+	height: 100px;
+	width: 100%;
+	opacity: 0.9;
+}

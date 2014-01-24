@@ -54,6 +54,7 @@ define(["jquery", "userservice"], function($, userservice) {
 			setTimeout(function() { 
 				$('#div_login').hide();
 				$('#div_main').show();
+				callback();
 			}, 2000);
 			
 		}
