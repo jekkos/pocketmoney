@@ -9,3 +9,9 @@ IMG.centered {
     margin-left: auto;
     margin-right: auto 
 }
+
+.widget-login {
+	width: 700px;
+	height: 700px;
+	background-color: red;
+}
