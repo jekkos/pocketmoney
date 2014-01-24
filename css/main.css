@@ -23,3 +23,8 @@ IMG.centered {
 	margin: 16px;
 	background-color: blue;
 }
+
+.link {
+	cursor: pointer;
+	font-weight: bold;
+}
