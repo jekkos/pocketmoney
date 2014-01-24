@@ -9,19 +9,14 @@ define(["jquery", "jquery-scrolly", "jquery-ui-touch-punch"], function ($) {
 	  
 		$( "#draggable" ).draggable({
 			drag: function( event, ui ) {
-				
-				
 				var top = $('#draggable').css('top').replace('px', '');
 				
-				//console.log($('#draggable').css('top'), top)
 				if (level === 1 && top < 100 ) {
 					console.log('fall');
 					$('body').focus();
-					$('#draggable').animate({top: '400px'}, 10);
+					$('#draggable').animate({top: '500px'}, 100);
 				} 
 
-				
-				//osition: relative; left: 376px; top: 167px;
 			},
 			start : function() {
 				console.log('draggable start');
@@ -52,7 +47,16 @@ define(["jquery", "jquery-scrolly", "jquery-ui-touch-punch"], function ($) {
 		
 		$( "#droppable" ).droppable({
 				drop: function( event, ui ) {
-					$('#draggable').css({'border': '5px solid green'});
+					//$('#draggable').css({'border': '5px solid green'});
+					
+					// Sleep
+					setTimeout(function(){
+						$('#draggable img').attr('src', 'media/images/game/Character_Owl_2_eye1.png');
+						setTimeout(function(){
+							$('#draggable img').attr('src', 'media/images/game/Character_Owl_2_eye2.png');
+						}, 100);
+					}, 30);
+					
 				},
 				out: function (event, ui) {
 					$('#draggable').css({'border': ''});
