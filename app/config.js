@@ -7,7 +7,6 @@ require.config({
     "background" : "../scripting/background",
     "scrolly" : "../scripting/jquery.scrolly",
     "login" : "../scripting/login_main",
-    "landing" : "../scripting/landing_main"
   }
 });
 
