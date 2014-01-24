@@ -31,7 +31,7 @@ define(["jquery", "jquery-scrolly", "jquery-ui-touch-punch"], function ($) {
 					if (isFlying) {
 						setTimeout(function(){
 							fly();
-						}, 5);
+						}, 30);
 					} else {
 						console.log("stop flying");
 					}
