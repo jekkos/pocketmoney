@@ -7,6 +7,8 @@ define(["jquery"], function($) {
 		var $widget = $('#div_login');
 		var $placeHolder = $('#login_placeholder');
 		var loginIsCorrect = true;
+		var isIOS = ((/iphone|ipad/gi).test(navigator.appVersion));
+		var myUp = isIOS ? "touchend" : "mouseup";
 
 		notify = function() {
   			var selectedNumber = $(this).attr('id').substring(7,8);
@@ -21,7 +23,7 @@ define(["jquery"], function($) {
 				$placeHolder.append('<div class="button" id="button-'+i+'"></div>');
 				var $button = $('#button-'+i);
 				$button.css("background-image","url('media/images/login/owl-"+i+".png')");
-				$button.on( "click touchend", notify );
+				$button.on( myUp, notify );
 			}
 		};
 
