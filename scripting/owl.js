@@ -73,8 +73,15 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 				downY : downY,
 				upX : x,
 				upY : y
-			})
-			owl.fly(targetX, targetY);
+			});
+			
+			if (x === downX && y === downY){
+				owl.fly(x, y);
+			} else {
+				owl.fly(targetX, targetY);
+			}
+			
+			
 		};
 		
 		owl.update = function() {
