@@ -31,7 +31,6 @@ define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"],
           });
       };
       imgTree.src = "media/images/game/BG_tree.png";    
-
       $('.parallax').scrolly({bgParallax: true});
     };
 
