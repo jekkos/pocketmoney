@@ -31,15 +31,7 @@ define(["jquery", "createjs", "owl", "acorn", "nest", "statusbar", "jquery-scrol
 		  var newNest = nest.create();
 		  stage.addChild(newNest);	
           
-		  var imgHole = new Image(); 
-		  imgHole.onload = function(event) {
-			var bm = new createjs.Bitmap(imgHole);
-			
-			bm.x = 500;
-			bm.y = 200;
-			stage.addChild(bm);
-		  };
-		  imgHole.src = "media/images/game/Item_hole.png"; 
+
 		  
 		  var imgM = new Image(); 
 		  imgM.onload = function(event) {
@@ -66,8 +58,15 @@ define(["jquery", "createjs", "owl", "acorn", "nest", "statusbar", "jquery-scrol
           
           var newAcorn = acorn.create();
           stage.addChild(newAcorn);
-
-          
+/*
+          stage.addEventListener("dblclick", function(){
+		  
+			if (newOwl.currentAnimation === 'sleeped') {
+				newOwl.wake();
+			}
+			
+			stage.update(newOwl);
+		  });*/
     	  stage.addEventListener("stagemousedown", function(event) {
     		  console.log(event, event.rawX, event.rawY);
     		  //newOwl.fly(event.rawX, event.rawY);
@@ -104,24 +103,33 @@ define(["jquery", "createjs", "owl", "acorn", "nest", "statusbar", "jquery-scrol
 			var nestCoords = newNest.getCoordinates();
 			var distanceX = Math.abs((owlCoords.x - nestCoords.x)) 
 			var distanceY = Math.abs((owlCoords.y - nestCoords.y)) 
-			return (distanceX < 100 && distanceY < 100);  
+			console.log(distanceX, distanceY);
+			return (distanceX < 300 && distanceY < 120);  
 		  }
-		  
+		  var isSleeping = false;
 
           createjs.Ticker.timingMode = createjs.Ticker.RAF;
           createjs.Ticker.addEventListener("tick", function(event) {
               // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
-			  
-              if (newOwl.isFlying() && isOwlOnNest()) { 
-      			newOwl.sleep();  
-      		  }
-			  console.log("brache", isOwlOnBranche());
-			  if (!newOwl.isFlying() && !isOwlOnBranche()){
-				newOwl.y = newOwl.y + 1;
-			  }
+
 			  
         	  newOwl.update();
         	  stage.update(event);
+			  console.log(isOwlOnNest());
+			  
+              if (!isSleeping && !newOwl.isFlying() && isOwlOnNest() && (newOwl.currentAnimation !== 'sleep' || newOwl.currentAnimation !== 'sleeped')) { 
+      			newOwl.sleep();  
+				stage.update(event);
+				isSleeping = true;
+      		  } else if (!newOwl.isFlying() && newOwl.currentAnimation !== 'wake') {
+					//newOwl.wake();
+			  }
+/*
+			  console.log("brache", isOwlOnBranche(), isOwlOnNest());
+			  if (!newOwl.isFlying() && !isOwlOnBranche()){
+				newOwl.y = newOwl.y + 2;
+			  }
+*/
               // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
               
               if (newAcorn.isVisible() && 
