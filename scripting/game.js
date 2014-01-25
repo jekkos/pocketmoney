@@ -1,4 +1,4 @@
-define(["jquery", "createjs", "owl", "acorn", "spinner", "jquery-scrolly", "jquery-ui-touch-punch"], function ($, createjs, owl, acorn, spinner) {
+define(["jquery", "createjs", "owl", "acorn", "statusbar", "jquery-scrolly", "jquery-ui-touch-punch"], function ($, createjs, owl, acorn, statusbar) {
     //Do setup work her
     var init = function() {
     	
@@ -13,6 +13,15 @@ define(["jquery", "createjs", "owl", "acorn", "spinner", "jquery-scrolly", "jque
       //wait for the image to load
       var imgTree = new Image();
       imgTree.onload = function(event) {
+    	  
+    	  var checkIntersection = function(rect1,rect2) {
+    		  if ( rect1.x >= rect2.x + rect2.width 
+    				  || rect1.x + rect1.width <= rect2.x 
+    				  || rect1.y >= rect2.y + rect2.height 
+    				  || rect1.y + rect1.height <= rect2.y ) return false;
+    		  return true;
+    	  };
+
     	  var tree = new createjs.Bitmap(event.target);
           stage.addChild(tree);               
           
@@ -21,9 +30,6 @@ define(["jquery", "createjs", "owl", "acorn", "spinner", "jquery-scrolly", "jque
           
           var newAcorn = acorn.create();
           stage.addChild(newAcorn);
-          
-          var newSpinner = spinner.create();
-          stage.addChild(newSpinner);
           
     	  stage.addEventListener("stagemousedown", function(event) {
     		  console.log(event, event.rawX, event.rawY);
@@ -55,12 +61,15 @@ define(["jquery", "createjs", "owl", "acorn", "spinner", "jquery-scrolly", "jque
 
           createjs.Ticker.timingMode = createjs.Ticker.RAF;
           createjs.Ticker.addEventListener("tick", function(event) {
-              if (newOwl.isFlying() && isOwlOnTree()) { 
-      			//newOwl.sleep();  
-      		  }
         	  newOwl.update();
               // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
               stage.update(event);			  
+              
+              if (newOwl.isFlying() && !checkIntersection(newOwl.getBounds(), newAcorn.getBounds())) {
+            	  console.log("collision detected!!!");
+            	  statusbar.incrementAcorns();
+            	  acorn.visible = false;
+              }
           });
       };
       imgTree.src = "media/images/game/BG_tree.png";    

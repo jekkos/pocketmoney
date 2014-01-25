@@ -20,7 +20,6 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 		owl.sleep = function() {
 			console.log("owl sleep");
 			owl.gotoAndPlay("sleep");
-			
 			owl.setFlying(false);
 		};
 		

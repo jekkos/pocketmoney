@@ -15,8 +15,7 @@ require.config({
 	"bezier" : "../scripting/bezier",
 	// sprites
 	"owl" : "../scripting/owl",
-	"acorn" : "../scripting/acorn",
-	"spinner" : "../scripting/spinner"
+	"acorn" : "../scripting/acorn"
   }, 
   shim: {
 	    'jquery-scrolly': {
