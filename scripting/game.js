@@ -46,9 +46,9 @@ define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"],
         	  newOwl.update();
               // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
               stage.update(event);
-//              if (isOwlOnTree()) { 
-//      			grant.gotoAndPlay("sleep");  
-//      		  }
+              if (newOwl.isFlying() && isOwlOnTree()) { 
+      			newOwl.sleep();  
+      		  }
           });
       };
       imgTree.src = "media/images/game/BG_tree.png";    

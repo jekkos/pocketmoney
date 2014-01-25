@@ -19,30 +19,45 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 		
 		owl.sleep = function() {
 			this.gotoAndPlay("sleep");
+			this.setFlying(false);
 		};
 		
 		var bezier;
 		var t = 0;
+		var flying = false;
 	
 		owl.fly = function(x, y) {
-			if (!bezier) {
+			if (!flying) {
+				var diffY = Math.abs(owl.y - y);
+				var diffX = Math.abs(owl.x - x);
 				
 				bezier = new Bezier({x : owl.x, y : owl.y}, 
-									 {x : owl.x, y: owl.y - 100},
-									 {x : x, y : owl.y - 100}, 
+									 {x : owl.x, y: owl.y - diffY},
+									 {x : x, y : owl.y - diffY}, 
 									 {x : x, y :  y});
 				this.gotoAndPlay("fly");
+				flying = true;
 			}
 		};
 		
+		owl.setFlying = function(isFlying) {
+			flying = isFlying;
+			if (!flying) {
+				t = 0;
+				bezier = undefined;
+			}
+		};
+		
+		owl.isFlying = function() {
+			return flying;
+		};
+		
 		owl.update = function() {
-			if (t < 1 && bezier) {
+			if (this.isFlying()) {
 				t = t + 0.01; 
 				owl.x = bezier.x(t);
 				owl.y = bezier.y(t);
 			} else {
-				t = 0;
-				bezier = undefined;
 				this.sleep();
 			}
 		};
