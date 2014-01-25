@@ -24,7 +24,7 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
       imgTree.src = "media/images/game/BG_tree.png";    
 
       //wait for the image to load
-      var imgOwl;    
+      var imgOwl, imgEx;    
 
       var update = false;
       
@@ -35,52 +35,119 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
           
           imgOwl = new Image();
           imgOwl.onload = handleOwlLoad;
-          imgOwl.src = "media/images/game/Character_Owl_2.png";             
+          imgOwl.src = "media/images/game/Character_Owl_2.png";    
+          
+          imgEx = new Image();
+          imgEx.onload = handleExample;
+          imgEx.src = "media/images/game/runningGrant.png"; 
+      }
+      
+      
+      
+      function handleExample() {
+    	  
+          var data = new createjs.SpriteSheet({
+              "images": [imgEx],
+              "frames": {"regX": 0, "height": 292, "count": 64, "regY": 0, "width": 165},
+              // define two animations, run (loops, 1.5x speed) and jump (returns to run):
+              "animations": {"run": [0, 25, "run", 1.5], "jump": [26, 63, "run"]}
+	      });
+	      var grant = new createjs.Sprite(data, "run");
+	      grant.setTransform(100, 90, 0.8, 0.8);
+	      grant.framerate = 30;
+	      stage.addChild(grant);
+	      
+	      
+        // using "on" binds the listener to the scope of the currentTarget by default
+        // in this case that means it executes in the scope of the button.
+        grant.on("mousedown", function(evt) {
+      	  		console.log('mousedown');
+                this.parent.addChild(this);
+                this.offset = {x:this.x-evt.stageX, y:this.y-evt.stageY};
+        });
+        
+        // the pressmove event is dispatched when the mouse moves after a mousedown on the target until the mouse is released.
+        grant.on("pressmove", function(evt) {
+                this.x = evt.stageX+ this.offset.x;
+                this.y = evt.stageY+ this.offset.y;
+                // indicate that the stage should be updated on the next tick:
+                update = true;
+        });
+        
+        grant.on("rollover", function(evt) {
+                this.scaleX = this.scaleY = this.scale*1.2;
+                update = true;
+        });
+        
+        grant.on("rollout", function(evt) {
+                this.scaleX = this.scaleY = this.scale;
+                update = true;
+        });  	      
+	      stage.update();
       }
       
       function handleOwlLoad() {
     	  
-    	  var bitmap = new createjs.Bitmap(imgOwl);
-          stage.addChild(bitmap);               
-          bitmap.cursor = "pointer";
+          var data = new createjs.SpriteSheet({
+	              "images": [imgOwl],
+	              "frames": {"regX": 0, "height": 100, "count": 3, "regY": 0, "width": 100},
+	              // define two animations, run (loops, 1.5x speed) and jump (returns to run):
+	              "animations": {"run": [0, 2, "run", 1.5]}
+	      });
+	      var grant = new createjs.Sprite(data, "run");
+          //grant.setTransform(-200, 90, 0.8, 0.8);
+          grant.framerate = 30;  	  
+    	  
+	      //stage.addChild(grant);
+	      stage.update();
+//	      
+	      
+	      //stage.addEventListener("stagemousedown", handleJumpStart);
+	      
+//    	  var bitmap = new createjs.Bitmap(imgOwl);
+//          stage.addChild(bitmap);               
+//          bitmap.cursor = "pointer";
+//          
+//          // using "on" binds the listener to the scope of the currentTarget by default
+//          // in this case that means it executes in the scope of the button.
+//          bitmap.on("mousedown", function(evt) {
+//        	  		console.log('mousedown');
+//                  this.parent.addChild(this);
+//                  this.offset = {x:this.x-evt.stageX, y:this.y-evt.stageY};
+//          });
+//          
+//          // the pressmove event is dispatched when the mouse moves after a mousedown on the target until the mouse is released.
+//          bitmap.on("pressmove", function(evt) {
+//                  this.x = evt.stageX+ this.offset.x;
+//                  this.y = evt.stageY+ this.offset.y;
+//                  // indicate that the stage should be updated on the next tick:
+//                  update = true;
+//          });
+//          
+//          bitmap.on("rollover", function(evt) {
+//                  this.scaleX = this.scaleY = this.scale*1.2;
+//                  update = true;
+//          });
+//          
+//          bitmap.on("rollout", function(evt) {
+//                  this.scaleX = this.scaleY = this.scale;
+//                  update = true;
+//          });          
           
-          // using "on" binds the listener to the scope of the currentTarget by default
-          // in this case that means it executes in the scope of the button.
-          bitmap.on("mousedown", function(evt) {
-        	  		console.log('mousedown');
-                  this.parent.addChild(this);
-                  this.offset = {x:this.x-evt.stageX, y:this.y-evt.stageY};
-          });
-          
-          // the pressmove event is dispatched when the mouse moves after a mousedown on the target until the mouse is released.
-          bitmap.on("pressmove", function(evt) {
-                  this.x = evt.stageX+ this.offset.x;
-                  this.y = evt.stageY+ this.offset.y;
-                  // indicate that the stage should be updated on the next tick:
-                  update = true;
-          });
-          
-          bitmap.on("rollover", function(evt) {
-                  this.scaleX = this.scaleY = this.scale*1.2;
-                  update = true;
-          });
-          
-          bitmap.on("rollout", function(evt) {
-                  this.scaleX = this.scaleY = this.scale;
-                  update = true;
-          });          
-          
+	      createjs.Ticker.timingMode = createjs.Ticker.RAF;
           createjs.Ticker.addEventListener("tick", tick);
           stage.update();
       }
       
       function tick(event) {
+    	  console.log('tick');
           // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
           if (update) {
         	  		console.log('tick');
                   update = false; // only update once
                   stage.update(event);
           }
+          stage.update(event);
       }      
       
       $('.parallax').scrolly({bgParallax: true});
