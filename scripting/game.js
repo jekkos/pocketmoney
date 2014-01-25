@@ -84,6 +84,7 @@ define(["jquery", "createjs", "owl", "acorn", "nest", "statusbar", "jquery-scrol
     		  var blue = point.data[1];
     		  var green = point.data[2];
     		  var alpha = point.data[3];
+			  console.log(red, blue, green);
     		  return (198==red && 156 == blue && 109 ==green);
     	  };
 		  
@@ -109,9 +110,15 @@ define(["jquery", "createjs", "owl", "acorn", "nest", "statusbar", "jquery-scrol
           createjs.Ticker.timingMode = createjs.Ticker.RAF;
           createjs.Ticker.addEventListener("tick", function(event) {
               // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
+			  
               if (newOwl.isFlying() && isOwlOnNest()) { 
       			newOwl.sleep();  
       		  }
+			  console.log("brache", isOwlOnBranche());
+			  if (!newOwl.isFlying() && !isOwlOnBranche()){
+				newOwl.y = newOwl.y + 1;
+			  }
+			  
         	  newOwl.update();
         	  stage.update(event);
               // this set makes it so the stage only re-renders when an event handler indicates a change has happened.

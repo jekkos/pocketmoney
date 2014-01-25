@@ -22,7 +22,10 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 			owl.gotoAndPlay("sleep");
 			owl.setFlying(false);
 		};
-		
+		owl.wake = function() {
+			owl.gotoAndPlay("wake");
+			owl.setFlying(false);
+		};
 		var bezier;
 		var t = 0;
 		var flying = false;
@@ -101,7 +104,7 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 				owl.y = bezier.y(t);
 			} else if (owl.currentAnimation === 'fly') {
 				console.log("sleep");
-				owl.sleep();
+				owl.wake();
 			}
 		};
 		
