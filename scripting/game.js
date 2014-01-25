@@ -39,24 +39,29 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
           
           imgEx = new Image();
           imgEx.onload = handleExample;
-          imgEx.src = "media/images/game/runningGrant.png"; 
+          imgEx.src = "media/images/game/Character_Owl_2_sprite.png"; 
       }
       
-      
+      var grant;
       
       function handleExample() {
     	  
           var data = new createjs.SpriteSheet({
               "images": [imgEx],
-              "frames": {"regX": 0, "height": 292, "count": 64, "regY": 0, "width": 165},
+              "frames": {"regX": 0, "height": 300, "count": 9, "regY": 0, "width": 300},
               // define two animations, run (loops, 1.5x speed) and jump (returns to run):
-              "animations": {"run": [0, 25, "run", 1.5], "jump": [26, 63, "run"]}
+              "animations": {"sleep": [0, 2], "fly": [3, 4, "fly", 500]}
 	      });
-	      var grant = new createjs.Sprite(data, "run");
+	      grant = new createjs.Sprite(data, "sleep");
 	      grant.setTransform(100, 90, 0.8, 0.8);
 	      grant.framerate = 30;
 	      stage.addChild(grant);
 	      
+	      stage.addEventListener("stagemousedown", function () {
+              grant.gotoAndPlay("fly");
+	        });	      
+	      
+	    	      
 	      
         // using "on" binds the listener to the scope of the currentTarget by default
         // in this case that means it executes in the scope of the button.
@@ -141,6 +146,10 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
       
       function tick(event) {
     	  console.log('tick');
+    	  
+          grant.x = grant.x + 0.1;
+          grant.y = grant.y + 0.5;    	  
+    	  
           // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
           if (update) {
         	  		console.log('tick');
