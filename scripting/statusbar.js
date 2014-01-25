@@ -29,9 +29,7 @@ define(["jquery"], function ($) {
 	};
 	
 	var drawEnergy = function() {
-		for (var i = 0; i < maxEnergy; i++) {				
-			$('div#energy tr').append('<td><img src="media/images/game/energy_'+ ((i < currentEnergy) ? '1' : '2') +'.png"/></td>');
-		}		
+		$('div#energy').html('<td><img src="media/images/game/energy_'+ ((currentEnergy < maxEnergy) ? '1' : '2') +'.png"/></td>');
 	};
 	
     //Do setup work here

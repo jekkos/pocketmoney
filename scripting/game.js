@@ -14,12 +14,13 @@ define(["jquery", "createjs", "owl", "acorn", "statusbar", "jquery-scrolly", "jq
       var imgTree = new Image();
       imgTree.onload = function(event) {
     	  
-    	  var checkIntersection = function(rect1,rect2) {
-    		  if ( rect1.x >= rect2.x + rect2.width 
-    				  || rect1.x + rect1.width <= rect2.x 
-    				  || rect1.y >= rect2.y + rect2.height 
-    				  || rect1.y + rect1.height <= rect2.y ) return false;
-    		  return true;
+    	  var checkIntersection = function(object1,object2) {
+    		  if (object1.x < object2.x + object2.width  && object1.x + object1.width  > object2.x &&
+      			    object1.y < object2.y + object2.height && object1.y + object1.height > object2.y) {
+      			// The objects are touching
+    			  return true;
+      			}
+    		  return false;
     	  };
 
     	  var tree = new createjs.Bitmap(event.target);
@@ -72,10 +73,12 @@ define(["jquery", "createjs", "owl", "acorn", "statusbar", "jquery-scrolly", "jq
         	  stage.update(event);
               // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
               
-              if (newOwl.isFlying() && !checkIntersection(newOwl.getBounds(), newAcorn.getBounds())) {
+              if (newAcorn.isVisible() && 
+            		  newOwl.isFlying() && 
+            		  checkIntersection(newOwl.getTransformedBounds(), newAcorn.getTransformedBounds())) {
             	  console.log("collision detected!!!");
             	  statusbar.incrementAcorns();
-            	  acorn.visible = false;
+            	  newAcorn.visible = false;
               }
           });
       };
