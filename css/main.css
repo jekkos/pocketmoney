@@ -1,5 +1,6 @@
 body {
 	background-color: #6699CC;
+	overflow-x: hidden;
 }
 
 h3 {
@@ -67,3 +68,25 @@ div#status-bar {
 	width: 100%;
 	opacity: 0.9;
 }
+
+div#acorns {
+	float: right;
+	width: 400px;
+}
+
+div#energy {
+	float: left;
+	width: 400px;
+}
+
+div#acorns  img {
+	width: 80px;
+	height: 80px;
+}
+
+div#energy  img {
+	width: 80px;
+	height: 80px;
+}
+
+
