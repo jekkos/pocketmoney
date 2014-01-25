@@ -25,6 +25,36 @@ define(["jquery", "createjs", "owl", "acorn", "statusbar", "jquery-scrolly", "jq
     	  var tree = new createjs.Bitmap(event.target);
           stage.addChild(tree);               
           
+		  var imgHole = new Image(); 
+		  imgHole.onload = function(event) {
+			var bm = new createjs.Bitmap(imgHole);
+			
+			bm.x = 500;
+			bm.y = 300;
+			stage.addChild(bm);
+		  };
+		  imgHole.src = "media/images/game/Item_hole.png"; 
+		  
+		  var imgM = new Image(); 
+		  imgM.onload = function(event) {
+			var bm = new createjs.Bitmap(imgM);
+			
+			bm.x = 800;
+			bm.y = 50;
+			stage.addChild(bm);
+		  };
+		  imgM.src = "media/images/game/Character_Magie_2.png"; 		  
+		  
+		  var imgS = new Image(); 
+		  imgS.onload = function(event) {
+			var bm = new createjs.Bitmap(imgS);
+			
+			bm.x = 1000;
+			bm.y = 500;
+			stage.addChild(bm);
+		  };
+		  imgS.src = "media/images/game/Character_Squirill_3.png"; 		  
+		  
           var newOwl = owl.create();
           stage.addChild(newOwl);
           
