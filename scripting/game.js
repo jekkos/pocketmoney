@@ -8,7 +8,9 @@ define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"],
       var canvas = document.getElementById("testCanvas");
 
       // create a new stage and point it at our canvas:
-      var stage = new createjs.Stage(canvas);      
+      var stage = new createjs.Stage(canvas);   
+
+		
 
       //wait for the image to load
       var imgTree = new Image();
@@ -18,7 +20,8 @@ define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"],
           
           var newOwl = owl.create();
           stage.addChild(newOwl);
-          
+		  
+		          
     	  stage.addEventListener("stagemousedown", function(event) {
     		  console.log(event, event.rawX, event.rawY);
     		  //newOwl.fly(event.rawX, event.rawY);
