@@ -14,7 +14,7 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 		
 	   	var owl = new createjs.Sprite(data, "wake");
 
-	    owl.setTransform(100, 800, 0.8, 0.8);
+	    owl.setTransform(100, 1450, 0.8, 0.8);
 	   	owl.framerate = 2;	
 		
 		owl.sleep = function() {

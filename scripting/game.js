@@ -30,7 +30,7 @@ define(["jquery", "createjs", "owl", "acorn", "statusbar", "jquery-scrolly", "jq
 			var bm = new createjs.Bitmap(imgHole);
 			
 			bm.x = 500;
-			bm.y = 300;
+			bm.y = 200;
 			stage.addChild(bm);
 		  };
 		  imgHole.src = "media/images/game/Item_hole.png"; 
