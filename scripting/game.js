@@ -62,7 +62,7 @@ define(["jquery", "createjs", "owl", "acorn", "nest", "statusbar", "jquery-scrol
 		  imgS.src = "media/images/game/Character_Squirill_3.png"; 		  
 		  
           var newOwl = owl.create();
-          stage.addChild(newOwl, 0);
+          stage.addChild(newOwl);
           
           var newAcorn = acorn.create();
           stage.addChild(newAcorn);

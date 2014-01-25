@@ -8,7 +8,7 @@ define(["jquery"], function ($) {
 	var drawAcorns = function() {
 		$('div#acorns tr').empty();
 		for (var i = 0; i < maxAcorns; i++) {
-			$('div#acorns tr').append('<td><img src="media/images/game/acorn_'+ ((i < currentAccorns) ? 'on' : 'off') +'.png"/></td>');
+			$('div#acorns tr').append('<td><img src="media/images/game/acorn_'+ ((i < currentAccorns) ? 'on2' : 'off') +'.png"/></td>');
 		}		
 	};
 	
