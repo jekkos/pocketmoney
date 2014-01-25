@@ -43,12 +43,12 @@ define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"],
 
           createjs.Ticker.timingMode = createjs.Ticker.RAF;
           createjs.Ticker.addEventListener("tick", function(event) {
+              if (newOwl.isFlying() && isOwlOnTree()) { 
+      			//newOwl.sleep();  
+      		  }
         	  newOwl.update();
               // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
-              stage.update(event);
-              if (newOwl.isFlying() && isOwlOnTree()) { 
-      			newOwl.sleep();  
-      		  }
+              stage.update(event);			  
           });
       };
       imgTree.src = "media/images/game/BG_tree.png";    
