@@ -25,16 +25,23 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 		var t = 0;
 	
 		owl.fly = function(x, y) {
-			bezier = new Bezier(owl.x, owl.y, x, y);
-			this.fly();
+			if (!bezier) {
+				
+				bezier = new Bezier({x : owl.x, y : owl.y}, 
+									 {x : owl.x, y: owl.y - 100},
+									 {x : x, y : owl.y - 100}, 
+									 {x : x, y :  y});
+				this.gotoAndPlay("fly");
+			}
 		};
 		
 		owl.update = function() {
 			if (t < 1 && bezier) {
-				t = t + 0.001; 
+				t = t + 0.01; 
 				owl.x = bezier.x(t);
 				owl.y = bezier.y(t);
 			} else {
+				t = 0;
 				bezier = undefined;
 				this.sleep();
 			}
