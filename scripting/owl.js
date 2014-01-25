@@ -18,8 +18,10 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 	   	owl.framerate = 2;	
 		
 		owl.sleep = function() {
-			this.gotoAndPlay("sleep");
-			this.setFlying(false);
+			console.log("owl sleep");
+			owl.gotoAndPlay("sleep");
+			
+			owl.setFlying(false);
 		};
 		
 		var bezier;
@@ -28,6 +30,7 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 	
 		owl.fly = function(x, y) {
 			if (!flying) {
+				
 				var diffY = Math.abs(owl.y - y);
 				var diffX = Math.abs(owl.x - x);
 				
@@ -60,13 +63,46 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 			return { x: owl.x + 110, y: owl.y + 8};		
 		};
 		
+		var downX, downY;
+		
+		owl.setFireDown = function (x, y){
+			downX = x;
+			downY = y;
+		};
+		
+		owl.setFireUp = function (x, y){
+			
+			var targetX = downX - ((downX - x));
+			var targetY = downY - ((downY - x));
+			console.log({
+				targetX : targetX,
+				targetY : targetY,
+				downX : downX,
+				downY : downY,
+				upX : x,
+				upY : y
+			});
+			
+			if (x === downX && y === downY){
+				owl.fly(x, y);
+			} else {
+				owl.fly(targetX, targetY);
+			}
+			
+			
+
+		};
+		
 		owl.update = function() {
-			if (this.isFlying()) {
+			
+			if (t < 1 && this.isFlying()) {
+				console.log("flying");
 				t = t + 0.01; 
 				owl.x = bezier.x(t);
 				owl.y = bezier.y(t);
-			} else {
-				this.sleep();
+			} else if (owl.currentAnimation === 'fly') {
+				console.log("sleep");
+				owl.sleep();
 			}
 		};
 		

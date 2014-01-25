@@ -21,10 +21,16 @@ define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"],
           
     	  stage.addEventListener("stagemousedown", function(event) {
     		  console.log(event, event.rawX, event.rawY);
-			  
-    		  newOwl.fly(event.rawX, event.rawY);
+    		  //newOwl.fly(event.rawX, event.rawY);
+			  newOwl.setFireDown(event.rawX, event.rawY);
     	  });
     	  
+		   stage.addEventListener("stagemouseup", function(event) {
+    		  console.log(event, event.rawX, event.rawY);
+    		  //newOwl.fly(event.rawX, event.rawY);
+			  newOwl.setFireUp(event.rawX, event.rawY);
+    	  });	
+		  
     	  var pointIsOnTree = function(point) {	  
     		  var red = point.data[0];
     		  var blue = point.data[1];
@@ -52,6 +58,9 @@ define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"],
               if (newOwl.isFlying() && isOwlOnBranche()) { 
       			newOwl.sleep();  
       		  }
+        	  newOwl.update();
+              // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
+              stage.update(event);			  
           });
       };
       imgTree.src = "media/images/game/BG_tree.png";    
