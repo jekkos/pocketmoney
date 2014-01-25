@@ -9,12 +9,12 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 			"images": [img],
 			"frames": {"regX": 0, "height": 300, "count": 9, "regY": 0, "width": 300},
 	        // define two animations, run (loops, 1.5x speed) and jump (returns to run):
-	        "animations": {"sleep": [0, 2, "sleeped"], "fly": [3, 4, "fly", 2], "sleeped": [2]}
+	        "animations": {"sleep": [0, 2, "sleeped"], "fly": [3, 4, "fly", 2], "sleeped": [2], "wake": [0]}
 	    });
 		
-	   	var owl = new createjs.Sprite(data, "sleep");
+	   	var owl = new createjs.Sprite(data, "wake");
 
-	    owl.setTransform(100, 90, 0.8, 0.8);
+	    owl.setTransform(100, 800, 0.8, 0.8);
 	   	owl.framerate = 2;	
 		
 		owl.sleep = function() {
