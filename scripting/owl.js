@@ -30,7 +30,7 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 	
 		owl.fly = function(x, y) {
 			if (!flying) {
-				flying = true;
+				
 				var diffY = Math.abs(owl.y - y);
 				var diffX = Math.abs(owl.x - x);
 				
@@ -39,7 +39,7 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 									 {x : x, y : owl.y - diffY}, 
 									 {x : x, y :  y});
 				this.gotoAndPlay("fly");
-				
+				flying = true;
 			}
 		};
 		
@@ -53,6 +53,19 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 		
 		owl.isFlying = function() {
 			return flying;
+		};
+		
+		var downX, downY;
+		
+		owl.setFireDown = function (x, y){
+			downX = x;
+			downY = y;
+		};
+		
+		owl.setFireUp = function (x, y){
+			var targetX = (downX - x) * 3;
+			var targetY = (y - downY) * 3;
+			owl.fly(targetX, targetY);
 		};
 		
 		owl.update = function() {

@@ -21,10 +21,16 @@ define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"],
           
     	  stage.addEventListener("stagemousedown", function(event) {
     		  console.log(event, event.rawX, event.rawY);
-			  
-    		  newOwl.fly(event.rawX, event.rawY);
+    		  //newOwl.fly(event.rawX, event.rawY);
+			  newOwl.setFireDown(event.rawX, event.rawY);
     	  });
     	  
+    	  stage.addEventListener("stagemouseup", function(event) {
+    		  console.log(event, event.rawX, event.rawY);
+    		  //newOwl.fly(event.rawX, event.rawY);
+			  newOwl.setFireUp(event.rawX, event.rawY);
+    	  });		  
+		  
     	  var pointIsTree = function(point) {	  
     		  var red = point.data[0];
     		  var blue = point.data[1];
