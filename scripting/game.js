@@ -20,8 +20,9 @@ define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"],
           stage.addChild(newOwl);
           
     	  stage.addEventListener("stagemousedown", function(event) {
-    		  console.log(event);
-    		  newOwl.fly(event.target.rawX, event.rawY);
+    		  console.log(event, event.rawX, event.rawY);
+			  
+    		  newOwl.fly(event.rawX, event.rawY);
     	  });
     	  
     	  var pointIsTree = function(point) {	  
