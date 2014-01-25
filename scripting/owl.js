@@ -54,6 +54,14 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 			return flying;
 		};
 		
+		owl.getBelowFeetCoordinates = function() {
+			return { x: owl.x + 110, y: owl.y + 205};		
+		};
+		
+		owl.getAboveHeadCoordinates = function() {
+			return { x: owl.x + 110, y: owl.y + 8};		
+		};
+		
 		var downX, downY;
 		
 		owl.setFireDown = function (x, y){
@@ -81,6 +89,7 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 			}
 			
 			
+
 		};
 		
 		owl.update = function() {
