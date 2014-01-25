@@ -1,4 +1,4 @@
-define(["jquery", "createjs", "owl", "acorn", "statusbar", "jquery-scrolly", "jquery-ui-touch-punch"], function ($, createjs, owl, acorn, statusbar) {
+define(["jquery", "createjs", "owl", "acorn", "nest", "statusbar", "jquery-scrolly", "jquery-ui-touch-punch"], function ($, createjs, owl, acorn, nest, statusbar) {
     //Do setup work her
     var init = function() {
     	
@@ -8,7 +8,9 @@ define(["jquery", "createjs", "owl", "acorn", "statusbar", "jquery-scrolly", "jq
       var canvas = document.getElementById("testCanvas");
 
       // create a new stage and point it at our canvas:
-      var stage = new createjs.Stage(canvas);      
+      var stage = new createjs.Stage(canvas);   
+
+		
 
       //wait for the image to load
       var imgTree = new Image();
@@ -25,6 +27,9 @@ define(["jquery", "createjs", "owl", "acorn", "statusbar", "jquery-scrolly", "jq
 
     	  var tree = new createjs.Bitmap(event.target);
           stage.addChild(tree);               
+		  
+		  var newNest = nest.create();
+		  stage.addChild(newNest);	
           
 		  var imgHole = new Image(); 
 		  imgHole.onload = function(event) {
@@ -61,6 +66,7 @@ define(["jquery", "createjs", "owl", "acorn", "statusbar", "jquery-scrolly", "jq
           
           var newAcorn = acorn.create();
           stage.addChild(newAcorn);
+
           
     	  stage.addEventListener("stagemousedown", function(event) {
     		  console.log(event, event.rawX, event.rawY);
@@ -92,11 +98,19 @@ define(["jquery", "createjs", "owl", "acorn", "statusbar", "jquery-scrolly", "jq
     		  return !aboveOnTree && belowOnTree;
     	  };	 
 		  
+		  var isOwlOnNest = function () {
+			var owlCoords = newOwl.getBelowFeetCoordinates();
+			var nestCoords = newNest.getCoordinates();
+			var distanceX = Math.abs((owlCoords.x - nestCoords.x)) 
+			var distanceY = Math.abs((owlCoords.y - nestCoords.y)) 
+			return (distanceX < 100 && distanceY < 100);  
+		  }
+		  
 
           createjs.Ticker.timingMode = createjs.Ticker.RAF;
           createjs.Ticker.addEventListener("tick", function(event) {
               // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
-              if (newOwl.isFlying() && isOwlOnBranche()) { 
+              if (newOwl.isFlying() && isOwlOnNest()) { 
       			newOwl.sleep();  
       		  }
         	  newOwl.update();
