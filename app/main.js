@@ -1,6 +1,5 @@
 // to depend on a bower installed component:
 // define(['bower_components/componentName/file'])
-
 define(["game", "login", "statusbar"], function(game, login, statusbar) {
 	
 	login.init(function(event) {
@@ -8,5 +7,4 @@ define(["game", "login", "statusbar"], function(game, login, statusbar) {
 		  game.init();
 		  statusbar.init();
     });
-	
 });
