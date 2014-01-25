@@ -25,6 +25,7 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
 
       //wait for the image to load
       var imgOwl, imgEx;    
+	  var owlWidth = 200, owlHeight = 205;
 
       var update = false;
       
@@ -81,14 +82,6 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
                 this.x = evt.stageX+ this.offset.x;
                 this.y = evt.stageY+ this.offset.y;
                 // indicate that the stage should be updated on the next tick:
-				var ctx = canvas.getContext('2d');
-				var x = this.x + imgOwl.width / 2;
-				var y = this.y + imgOwl.height;
-				
-				if (checkSnapPoint(ctx.getImageData(x, y, 1, 1))) {
-					
-					
-				}					
                 update = true;
         });
         
@@ -104,7 +97,17 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
 	      stage.update();
       }
 	  
-	  function checkSnapPoint(point) {
+	  
+	  function isOwlOnTree() {
+			var ctx = canvas.getContext('2d');
+			var x1 = grant.x + owlWidth / 2;
+			var y1 = grant.y + owlHeight;
+			var result = pointIsTree(ctx.getImageData(x1, y1, 1, 1));			
+			return result;
+		}
+	  
+	  
+	  function pointIsTree(point) {	  
 			var red = point.data[0];
 			var blue = point.data[1];
 			var green = point.data[2];
@@ -166,12 +169,13 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
       }
       
       function tick(event) {
-    	  console.log('tick');
-    	  
+   	  
     	  if (grant.currentAnimation === "fly") {
               grant.x = grant.x + 0.1;
               grant.y = grant.y + 0.5;    	  
     	  }
+		  
+		  
     	  
           // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
           if (update) {
@@ -180,6 +184,10 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
                   stage.update(event);
           }
           stage.update(event);
+		  
+		  if (isOwlOnTree()) { 
+			grant.gotoAndPlay("sleep");  
+		  }
       }      
       
       $('.parallax').scrolly({bgParallax: true});
