@@ -50,15 +50,20 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
               "images": [imgEx],
               "frames": {"regX": 0, "height": 300, "count": 9, "regY": 0, "width": 300},
               // define two animations, run (loops, 1.5x speed) and jump (returns to run):
-              "animations": {"sleep": [0, 2], "fly": [3, 4, "fly", 500]}
+              "animations": {"sleep": [0, 2, "sleeped"], "fly": [3, 4, "fly", 2], "sleeped": [2]}
 	      });
 	      grant = new createjs.Sprite(data, "sleep");
 	      grant.setTransform(100, 90, 0.8, 0.8);
-	      grant.framerate = 30;
+	      grant.framerate = 10;
 	      stage.addChild(grant);
 	      
 	      stage.addEventListener("stagemousedown", function () {
-              grant.gotoAndPlay("fly");
+	    	  if (grant.currentAnimation === "fly") {
+	    		  grant.gotoAndPlay("sleep");  
+	    	  } else {
+	    		  grant.gotoAndPlay("fly");
+	    	  }
+              
 	        });	      
 	      
 	    	      
@@ -147,8 +152,10 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
       function tick(event) {
     	  console.log('tick');
     	  
-          grant.x = grant.x + 0.1;
-          grant.y = grant.y + 0.5;    	  
+    	  if (grant.currentAnimation === "fly") {
+              grant.x = grant.x + 0.1;
+              grant.y = grant.y + 0.5;    	  
+    	  }
     	  
           // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
           if (update) {
