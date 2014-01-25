@@ -63,8 +63,17 @@ define(["createjs", "bezier"], function(createjs, Bezier) {
 		};
 		
 		owl.setFireUp = function (x, y){
-			var targetX = (downX - x) * 3;
-			var targetY = (y - downY) * 3;
+			
+			var targetX = downX - ((downX - x));
+			var targetY = downY - ((downY - x));
+			console.log({
+				targetX : targetX,
+				targetY : targetY,
+				downX : downX,
+				downY : downY,
+				upX : x,
+				upY : y
+			})
 			owl.fly(targetX, targetY);
 		};
 		
