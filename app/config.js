@@ -14,8 +14,9 @@ require.config({
 	"createjs" : "../scripting/createjs-2013.12.12.min",
 	"bezier" : "../scripting/bezier",
 	// sprites
-	"owl" : "../scripting/owl"
-      
+	"owl" : "../scripting/owl",
+	"acorn" : "../scripting/acorn",
+	"spinner" : "../scripting/spinner"
   }, 
   shim: {
 	    'jquery-scrolly': {

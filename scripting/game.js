@@ -1,4 +1,4 @@
-define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"], function ($, createjs, owl) {
+define(["jquery", "createjs", "owl", "acorn", "spinner", "jquery-scrolly", "jquery-ui-touch-punch"], function ($, createjs, owl, acorn, spinner) {
     //Do setup work her
     var init = function() {
     	
@@ -18,6 +18,12 @@ define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"],
           
           var newOwl = owl.create();
           stage.addChild(newOwl);
+          
+          var newAcorn = acorn.create();
+          stage.addChild(newAcorn);
+          
+          var newSpinner = spinner.create();
+          stage.addChild(newSpinner);
           
     	  stage.addEventListener("stagemousedown", function(event) {
     		  console.log(event, event.rawX, event.rawY);
