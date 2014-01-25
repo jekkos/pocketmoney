@@ -13,7 +13,7 @@ define(["jquery"], function ($) {
 	};
 	
 	var incrementAcorns = function() {
-		currentAccorns < maxAcorns && currentAccorns++ && drawAcorns();
+		currentAccorns < maxAcorns && ++currentAccorns && drawAcorns();
 	};
 	
 	var decrementAcorns = function() {

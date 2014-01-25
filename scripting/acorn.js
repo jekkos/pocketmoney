@@ -15,7 +15,7 @@ define(['createjs'], function(createjs) {
 	   var acorn = new createjs.Sprite(data, "spin");
 	   acorn.framerate = 10;	
 	   
-	   acorn.setTransform(300, 300, 0.8, 0.8);
+	   acorn.setTransform(150, 300, 0.8, 0.8);
 	   
 	   acorn.reposition = function() {
 		   acorn.x = Math.random() * acorn.x;
@@ -23,7 +23,7 @@ define(['createjs'], function(createjs) {
 		   return this;
 	   };
 	   
-	   return acorn.reposition();
+	   return acorn;
 	};
 	
 	return {
