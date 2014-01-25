@@ -63,7 +63,7 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
         grant.on("mousedown", function(evt) {
       	  		console.log('mousedown');
                 this.parent.addChild(this);
-                this.offset = {x:this.x-evt.stageX, y:this.y-evt.stageY};
+                this.offset = {x:this.x-evt.stageX, y:this.y-evt.stageY};				
         });
         
         // the pressmove event is dispatched when the mouse moves after a mousedown on the target until the mouse is released.
@@ -71,6 +71,14 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
                 this.x = evt.stageX+ this.offset.x;
                 this.y = evt.stageY+ this.offset.y;
                 // indicate that the stage should be updated on the next tick:
+				var ctx = canvas.getContext('2d');
+				var x = this.x + imgOwl.width / 2;
+				var y = this.y + imgOwl.height;
+				
+				if (checkSnapPoint(ctx.getImageData(x, y, 1, 1))) {
+					
+					
+				}					
                 update = true;
         });
         
@@ -85,6 +93,14 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
         });  	      
 	      stage.update();
       }
+	  
+	  function checkSnapPoint(point) {
+			var red = point.data[0];
+			var blue = point.data[1];
+			var green = point.data[2];
+			var alpha = point.data[3];
+			return (198==red && 156 == blue && 109 ==green);
+	  }
       
       function handleOwlLoad() {
     	  
@@ -140,7 +156,6 @@ define(["jquery", "createjs", "jquery-scrolly", "jquery-ui-touch-punch"], functi
       }
       
       function tick(event) {
-    	  console.log('tick');
           // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
           if (update) {
         	  		console.log('tick');
