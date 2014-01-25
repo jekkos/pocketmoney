@@ -17,14 +17,14 @@ define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"],
           stage.addChild(tree);               
           
           var newOwl = owl.create();
-          newOwl.run();
           stage.addChild(newOwl);
           
-    	  stage.addEventListener("stagemousedown", newOwl.fly);
-    	  
+    	  stage.addEventListener("stagemousedown", function() {
+    		  newOwl.sleep();
+    	  });
+
           createjs.Ticker.timingMode = createjs.Ticker.RAF;
           createjs.Ticker.addEventListener("tick", function(event) {
-        	  console.log('tick');
         	  newOwl.update();
               // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
               stage.update(event);
