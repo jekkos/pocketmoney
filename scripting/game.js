@@ -25,28 +25,31 @@ define(["jquery", "createjs", "owl", "jquery-scrolly", "jquery-ui-touch-punch"],
     		  newOwl.fly(event.rawX, event.rawY);
     	  });
     	  
-    	  var pointIsTree = function(point) {	  
+    	  var pointIsOnTree = function(point) {	  
     		  var red = point.data[0];
     		  var blue = point.data[1];
     		  var green = point.data[2];
     		  var alpha = point.data[3];
     		  return (198==red && 156 == blue && 109 ==green);
     	  };
-    	  
-    	  var isOwlOnTree = function() {
+		  
+
+    	  var isOwlOnBranche = function() {
     		  var ctx = canvas.getContext('2d');
-    		  var x1 = newOwl.x + newOwl.getBounds().width / 2;
-    		  var y1 = newOwl.y + newOwl.getBounds().height;
-    		  var result = pointIsTree(ctx.getImageData(x1, y1, 1, 1));			
-    		  return result;
-    	  };
+    		  var aboveCoords = newOwl.getAboveHeadCoordinates();
+			  var belowCoords = newOwl.getBelowFeetCoordinates();
+			  var aboveOnTree = pointIsOnTree(ctx.getImageData(aboveCoords.x, aboveCoords.y, 1, 1));
+			  var belowOnTree = pointIsOnTree(ctx.getImageData(belowCoords.x, belowCoords.y, 1, 1));
+    		  return !aboveOnTree && belowOnTree;
+    	  };	 
+		  
 
           createjs.Ticker.timingMode = createjs.Ticker.RAF;
           createjs.Ticker.addEventListener("tick", function(event) {
         	  newOwl.update();
               // this set makes it so the stage only re-renders when an event handler indicates a change has happened.
               stage.update(event);
-              if (newOwl.isFlying() && isOwlOnTree()) { 
+              if (newOwl.isFlying() && isOwlOnBranche()) { 
       			newOwl.sleep();  
       		  }
           });
