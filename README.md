@@ -1,6 +1,6 @@
 # pocketmoney
 
- An educational experience to learn children manage their pocket money 
+ An educational experience to learn children manage their pocket money. This game was built during a hackathon organised by Capgemini in Herenveen, Holland.
 
 ## Getting Started
 
